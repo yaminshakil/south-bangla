@@ -17,7 +17,7 @@
 .next-band{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#fff;text-align:center;padding:clamp(54px,7vw,84px) 0}
 .next-band h2{color:#fff}
 .next-band p{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-[id]{scroll-margin-top:90px}
+[id]{scroll-margin-top:0}
 
 /* ===================== ABOUT — editorial ===================== */
 .ab-hero{background:var(--paper);padding:130px 0 70px;border-bottom:1px solid var(--line)}
