@@ -1,17 +1,18 @@
 /* South Bangla Group — all content lives here so it is easy to edit.
    Every fact below comes from the company profile PDFs supplied by the group. */
 
-const IMG = (n) => `assets/img/${n}.jpg`;
+const IMG = (n) => `${import.meta.env.BASE_URL}assets/img/${n}.jpg`;
+export { IMG };
 
 /* Group-level contact. The phone number appears on the ARJS, South Bangla Agro,
    Lake View and Premio profiles; the address is the shared AH Tower office. */
-window.GROUP_CONTACT = {
+export const GROUP_CONTACT = {
   address: "AH Tower, Level 6 & 7, Plot 56, Sector 3, Uttara, Dhaka-1230, Bangladesh",
   phone: "+88 01638-048971",
   email: "letterboxmahmud@gmail.com"
 };
 
-window.SECTORS = [
+export const SECTORS = [
   { id: "agro",    label: "Agriculture & Food",   blurb: "Farms, storage, feed, spices, grains and fisheries that feed the nation.", icon: "wheat" },
   { id: "apparel", label: "Apparel & Textile",    blurb: "Knit, woven and denim garments made for global brands.",                  icon: "thread" },
   { id: "jute",    label: "Jute",                 blurb: "The golden fibre — yarn, hessian and jute products.",                      icon: "jute" },
@@ -20,7 +21,7 @@ window.SECTORS = [
   { id: "trade",   label: "Trade",                blurb: "Connecting markets and creating opportunities worldwide.",                 icon: "globe" }
 ];
 
-window.COMPANIES = [
+export const COMPANIES = [
   {
     id: "arjs",
     name: "ARJS Agro BD Ltd.",
@@ -298,14 +299,14 @@ window.COMPANIES = [
     highlights: ["Global connections", "Trusted partnerships", "Smart solutions", "Lasting value"],
     gallery: [],
     leaders: [
-      { name: "Jiyaul Haider", role: "Managing Director", photo: IMG("p-access-jiyaul") }
+      { name: "Ziaul Haider", role: "Managing Director", photo: IMG("p-access-jiyaul") }
     ],
     contacts: [["Group desk", "Please use the group contact details"]]
   }
 ];
 
 /* People who sit on more than one company board — shown once in the Leadership section. */
-window.PEOPLE = [
+export const PEOPLE = [
   { name: "Mahmudul Hasan",      photo: IMG("p-sb-mahmudul"),   roles: [["Premio Real Estate", "Managing Director"], ["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Director"]] },
   { name: "Afsana Rahman",       photo: IMG("p-prem-afsana"),   roles: [["Premio Real Estate", "Chairman"]] },
   { name: "Syad Md Iddris",      photo: IMG("p-sb-syad"),       roles: [["ARJS Agro BD", "Deputy Managing Director"], ["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
@@ -316,5 +317,5 @@ window.PEOPLE = [
   { name: "SK. Benozir Ahmed Siddique", photo: IMG("p-arjs-chair"), roles: [["ARJS Agro BD", "Chairman"]] },
   { name: "Md Akhter Hossain",   photo: IMG("p-arjs-md"),       roles: [["ARJS Agro BD", "Managing Director"]] },
   { name: "Shyad Hasan Ali",     photo: IMG("p-sb-shyad"),      roles: [["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
-  { name: "Jiyaul Haider",       photo: IMG("p-access-jiyaul"), roles: [["Access World Trading", "Managing Director"]] }
+  { name: "Ziaul Haider",        photo: IMG("p-access-jiyaul"), roles: [["Access World Trading", "Managing Director"]] }
 ];

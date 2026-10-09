@@ -41,6 +41,8 @@
   };
   const svg = (n) => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[n]}</svg>`;
 
+  const TITLE_EN = document.title;
+  const has = (sel) => !!$(sel);
   let filter = 'all';
   let openId = null;
   const inClass = () => 'in'; // dynamic content is shown immediately
@@ -58,11 +60,12 @@
     });
     $('#lang').setAttribute('aria-pressed', bn());
     $$('#lang [data-l]').forEach((s) => s.classList.toggle('on', s.dataset.l === L));
-    document.title = bn() ? 'সাউথ বাংলা গ্রুপ — মাটির সাথে শিকড়, শিল্পে শিল্পে প্রসার' : 'South Bangla Group — Rooted in Bangladesh, Growing Across Industries';
+    document.title = (bn() && document.documentElement.dataset.titleBn) || TITLE_EN;
   }
 
   /* ---------- sectors ---------- */
   function renderSectors(first) {
+    if (!has('#sectorGrid')) return;
     $('#sectorGrid').innerHTML = SECTORS().map((s, i) => {
       const names = COMPANIES.filter((c) => inSector(c, s.id)).map((c) => c.short).join(' · ');
       return `<button class="sector reveal ${first ? '' : 'in'}" style="--d:${i * .07}s" data-sector="${s.id}">
@@ -74,7 +77,7 @@
         el.style.setProperty('--mx', e.clientX - r.left + 'px');
         el.style.setProperty('--my', e.clientY - r.top + 'px');
       });
-      el.addEventListener('click', () => { setFilter(el.dataset.sector); $('#companies').scrollIntoView(); });
+      el.addEventListener('click', () => { location.href = 'what-we-do.html#' + el.dataset.sector; });
     });
     if (first) observeReveals($$('.sector'));
   }
@@ -82,10 +85,12 @@
   /* ---------- filters + cards ---------- */
   const filters = $('#filters'), cards = $('#cards');
   function renderFilters() {
+    if (!filters) return;
     filters.innerHTML = [{ id: 'all', label: ui('co.all', 'All companies') }, ...SECTORS()].map((s) =>
       `<button class="chip" role="tab" data-f="${s.id}" aria-selected="${s.id === filter}">${esc(s.label)}</button>`).join('');
   }
   function renderCards(first) {
+    if (!cards) return;
     cards.innerHTML = COMPANIES.map((base, i) => {
       const c = co(base);
       return `<button class="card reveal ${first ? '' : 'in'}" style="--d:${(i % 4) * .08}s" data-id="${c.id}" aria-label="${esc(c.name)}">
@@ -102,14 +107,15 @@
     bindTilt();
   }
   function applyFilter() {
+    if (!cards) return;
     $$('.card', cards).forEach((el) => {
       const c = COMPANIES.find((x) => x.id === el.dataset.id);
       el.classList.toggle('hide', filter !== 'all' && !inSector(c, filter));
     });
   }
   function setFilter(id) { filter = id; renderFilters(); applyFilter(); }
-  filters.addEventListener('click', (e) => { const b = e.target.closest('.chip'); if (b) setFilter(b.dataset.f); });
-  cards.addEventListener('click', (e) => { const b = e.target.closest('.card'); if (b) openCompany(b.dataset.id); });
+  if (filters) filters.addEventListener('click', (e) => { const b = e.target.closest('.chip'); if (b) setFilter(b.dataset.f); });
+  if (cards) cards.addEventListener('click', (e) => { const b = e.target.closest('.card'); if (b) openCompany(b.dataset.id); });
 
   function bindTilt() {
     if (reduce || !matchMedia('(hover:hover)').matches) return;
@@ -124,16 +130,18 @@
 
   /* ---------- tree ---------- */
   function renderTree() {
+    if (!has('#tree')) return;
     const cols = SECTORS().map((s) => {
       const list = COMPANIES.filter((c) => c.sector === s.id);
       return `<div class="tree-col"><div class="tree-sector">${esc(s.label)}</div>${list.map((c) => `<button class="tree-co" data-id="${c.id}">${esc(c.short)}</button>`).join('')}</div>`;
     }).join('');
     $('#tree').innerHTML = `<div class="tree-root"><span class="brand-mark"><img src="assets/img/logo-sbg.jpg" alt=""></span>${bn() ? 'সাউথ বাংলা গ্রুপ' : 'South Bangla Group'}</div><div class="tree-stem"></div><div class="tree-cols">${cols}</div>`;
   }
-  $('#tree').addEventListener('click', (e) => { const b = e.target.closest('.tree-co'); if (b) openCompany(b.dataset.id); });
+  if (has('#tree')) $('#tree').addEventListener('click', (e) => { const b = e.target.closest('.tree-co'); if (b) openCompany(b.dataset.id); });
 
   /* ---------- people ---------- */
   function renderPeople(first) {
+    if (!has('#people')) return;
     $('#people').innerHTML = PEOPLE.map((p, i) => `
       <article class="person reveal ${first ? '' : 'in'}" style="--d:${(i % 5) * .07}s">
         <img src="${p.photo}" alt="${esc(p.name)}" loading="lazy">
@@ -147,10 +155,11 @@
   /* ---------- ribbon ---------- */
   const ribbonImgs = ['kfl-sew', 'lake-pool', 'son-loom', 'prem-b7', 'sb-onion1', 'delta-sew', 'arjs-dairy', 'lake-pine1', 'kfl-ship', 'prem-stone', 'son-rolls', 'sb-turmeric', 'delta-spin', 'lake-poultry2', 'kfl-print', 'prem-b3'];
   const strip = ribbonImgs.map((n) => `<img src="assets/img/${n}.jpg" alt="" loading="lazy">`).join('');
-  $('#ribbon').innerHTML = strip + strip;
+  if (has('#ribbon')) $('#ribbon').innerHTML = strip + strip;
 
   /* ---------- contact ---------- */
   function renderContact() {
+    if (!has('#contactList')) return;
     $('#contactList').innerHTML = `
       <li><span class="ci">${svg('pin')}</span><div><small>${ui('ct.office', 'Group office')}</small>${esc(GROUP_CONTACT.address)}</div></li>
       <li><span class="ci">${svg('phone')}</span><div><small>${ui('ct.phone', 'Phone')}</small><a href="tel:${GROUP_CONTACT.phone.replace(/[^+\d]/g, '')}">${GROUP_CONTACT.phone}</a></div></li>
@@ -159,7 +168,7 @@
     sel.innerHTML = `<option value="">${ui('f.any', 'Not sure / whole group')}</option>` + COMPANIES.map((c) => `<option value="${esc(c.name)}">${esc(c.name)}</option>`).join('');
     sel.selectedIndex = Math.max(keep, 0);
   }
-  $('#form').addEventListener('submit', (e) => {
+  if (has('#form')) $('#form').addEventListener('submit', (e) => {
     e.preventDefault();
     const f = e.target, note = $('#formNote'); let ok = true;
     ['name', 'from', 'msg'].forEach((n) => { const bad = !f[n].value.trim(); f[n].classList.toggle('bad', bad); if (bad) ok = false; });
@@ -171,20 +180,23 @@
     note.textContent = ui('f.ok', 'Thank you! Your email app should now open with the message ready to send.');
   });
 
+  /* ---------- shared helpers ---------- */
+  const contactLine = ([k, v]) => {
+    let val = esc(v);
+    if (k === 'Email') val = `<a href="mailto:${esc(v)}">${esc(v)}</a>`;
+    else if (k === 'Phone') val = v.split(',').map((p) => `<a href="tel:${p.replace(/[^+\d]/g, '')}">${esc(p.trim())}</a>`).join(', ');
+    else if (k === 'Group desk' && bn()) val = 'অনুগ্রহ করে গ্রুপের যোগাযোগের তথ্য ব্যবহার করুন';
+    return `<div><dt>${esc(label(k))}</dt><dd>${val}</dd></div>`;
+  };
+  const initial = (n) => esc(n.replace(/^(Engr\.|Md\.?|SK\.?)\s*(\(BUET\)\s*)?/, '')[0] || '•');
+  const leaderChip = (l) => `<div class="leader">${l.photo ? `<img src="${l.photo}" alt="" loading="lazy">` : `<span class="noph">${initial(l.name)}</span>`}<div><b>${esc(l.name)}</b><small>${esc(role(l.role))}</small></div></div>`;
+
   /* ---------- company dialog ---------- */
   const modal = $('#modal'), mBody = $('#modalBody');
   let lastFocus = null;
   function renderModal(id) {
     const c = co(COMPANIES.find((x) => x.id === id));
     const ex = c.extra || {};
-    const contactLine = ([k, v]) => {
-      let val = esc(v);
-      if (k === 'Email') val = `<a href="mailto:${esc(v)}">${esc(v)}</a>`;
-      else if (k === 'Phone') val = v.split(',').map((p) => `<a href="tel:${p.replace(/[^+\d]/g, '')}">${esc(p.trim())}</a>`).join(', ');
-      else if (k === 'Group desk' && bn()) val = 'অনুগ্রহ করে গ্রুপের যোগাযোগের তথ্য ব্যবহার করুন';
-      return `<div><dt>${esc(label(k))}</dt><dd>${val}</dd></div>`;
-    };
-    const initial = (n) => esc(n.replace(/^(Engr\.|Md\.?|SK\.?)\s*(\(BUET\)\s*)?/, '')[0] || '•');
     mBody.innerHTML = `
       <div class="m-hero ${c.cover ? '' : 'logo-hero'}">
         <img src="${c.cover || c.logo}" alt="" ${c.cover ? `style="object-position:${c.position || 'center'}"` : ''}>
@@ -200,9 +212,9 @@
         ${ex.buyers ? `<div><h3 class="m-title">${esc(ex.title)}</h3><div class="pillrow">${ex.buyers.map((b) => `<span class="pill">${esc(b)}</span>`).join('')}</div>
            <h3 class="m-title" style="margin-top:22px">${ui('m.certs', 'Certifications & standards')}</h3><div class="pillrow">${ex.certs.map((b) => `<span class="pill gold">${esc(b)}</span>`).join('')}</div></div>` : ''}
         ${ex.siblings ? `<div><h3 class="m-title">${esc(ex.siblingsTitle)}</h3><div class="pillrow">${ex.siblings.map((b) => `<span class="pill">${esc(b)}</span>`).join('')}</div></div>` : ''}
-        ${c.leaders.length ? `<div><h3 class="m-title">${ui('m.leaders', 'Leadership')}</h3><div class="m-leaders">${c.leaders.map((l) => `<div class="leader">${l.photo ? `<img src="${l.photo}" alt="" loading="lazy">` : `<span class="noph">${initial(l.name)}</span>`}<div><b>${esc(l.name)}</b><small>${esc(role(l.role))}</small></div></div>`).join('')}</div></div>` : ''}
+        ${c.leaders.length ? `<div><h3 class="m-title">${ui('m.leaders', 'Leadership')}</h3><div class="m-leaders">${c.leaders.map(leaderChip).join('')}</div></div>` : ''}
         <div><h3 class="m-title">${ui('m.contact', 'Contact & locations')}</h3><dl class="m-contacts">${c.contacts.map(contactLine).join('')}</dl></div>
-        <div class="m-cta"><a class="btn btn-gold" href="#contact" data-close>${ui('m.cta1', 'Contact the group')}</a><button class="btn btn-ghost" data-close type="button">${ui('m.cta2', 'Back to all companies')}</button></div>
+        <div class="m-cta"><a class="btn btn-gold" href="contact.html">${ui('m.cta1', 'Contact the group')}</a><button class="btn btn-ghost" data-close type="button">${ui('m.cta2', 'Back to all companies')}</button></div>
       </div>`;
     const imgs = c.gallery;
     $$('.gallery button', mBody).forEach((b) => b.addEventListener('click', () => lightbox(imgs, +b.dataset.i)));
@@ -248,7 +260,7 @@
 
   /* ---------- nav ---------- */
   const nav = $('#nav'), burger = $('#burger'), links = $('#navLinks');
-  const onScroll = () => nav.classList.toggle('solid', scrollY > 40);
+  const onScroll = () => nav.classList.toggle('solid', scrollY > 40 || document.body.hasAttribute('data-solid'));
   onScroll(); addEventListener('scroll', onScroll, { passive: true });
   burger.addEventListener('click', () => {
     const open = links.classList.toggle('open');
@@ -266,11 +278,12 @@
 
   function countUp(el) {
     const end = +el.dataset.count, pre = el.dataset.prefix || '', suf = el.dataset.suffix || '', plus = el.dataset.plus ? '+' : '';
-    if (reduce) { el.textContent = pre + end.toLocaleString() + suf + plus; return; }
+    const dec = String(end).includes('.') ? 1 : 0, fmt = (n) => n.toLocaleString(undefined, { minimumFractionDigits: dec, maximumFractionDigits: dec });
+    if (reduce) { el.textContent = pre + fmt(end) + suf + plus; return; }
     const t0 = performance.now(), dur = 1800;
     (function tick(t) {
       const p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
-      el.textContent = pre + Math.round(end * e).toLocaleString() + suf + (p === 1 ? plus : '');
+      el.textContent = pre + fmt(dec ? +(end * e).toFixed(1) : Math.round(end * e)) + suf + (p === 1 ? plus : '');
       if (p < 1) requestAnimationFrame(tick);
     })(t0);
   }
@@ -303,20 +316,32 @@
     loop();
   }
 
+  /* ---------- nav: mark current page ---------- */
+  const here = document.body.dataset.page;
+  $$('.nav-links a[data-page], .footer nav a[data-page]').forEach((a) => { if (a.dataset.page === here) a.setAttribute('aria-current', 'page'); });
+
+  /* ---------- hooks for the page-specific renderers (js/pages.js) ---------- */
+  window.SBG = { $, $$, esc, svg, bn, ui, role, label, co, sectorOf, inSector, COMPANIES, SECTORS, PEOPLE, GROUP_CONTACT, BASE_SECTORS,
+    openCompany, lightbox, contactLine, leaderChip, initial, observeReveals, countUp, setLang: null };
+  const extra = (window.PAGE_RENDERERS || []).map((f) => f(window.SBG));
+
   /* ---------- language toggle ---------- */
   function renderAll(first) {
     applyStatic();
     renderSectors(first); renderFilters(); renderCards(first); renderTree(); renderPeople(first); renderContact();
+    extra.forEach((f) => f(first));
     if (openId) renderModal(openId);
   }
   $('#lang').addEventListener('click', () => {
     L = bn() ? 'en' : 'bn';
     try { localStorage.setItem('sbg-lang', L); } catch (e) {}
-    const f = $('#formNote'); delete f.dataset.state;
+    const f = $('#formNote'); if (f) delete f.dataset.state;
     renderAll(false);
   });
 
   renderAll(true);
-  if (COMPANIES.some((c) => '#' + c.id === location.hash)) setTimeout(() => openCompany(location.hash.slice(1)), 300);
+  if (has('#cards') && BASE_SECTORS.some((x) => '#' + x.id === location.hash)) setFilter(location.hash.slice(1));
+  else if (has('#sectorDetail') && location.hash) setTimeout(() => { const t = $(location.hash); t && t.scrollIntoView(); }, 50);
+  if (document.body.dataset.page !== 'companies' && COMPANIES.some((c) => '#' + c.id === location.hash)) setTimeout(() => openCompany(location.hash.slice(1)), 300);
   $$('.reveal').filter((el) => !el.classList.contains('in')).forEach((el) => io.observe(el));
 })();
