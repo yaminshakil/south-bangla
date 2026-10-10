@@ -77,11 +77,12 @@ export const COMPANIES = [
     highlights: ["Grain silos", "Onion storage", "Spices", "Pulses", "Oilseeds", "Feed mill"],
     gallery: ["sb-silo", "sb-silo2", "sb-onion1", "sb-onion2", "sb-warehouse", "sb-chili", "sb-turmeric", "sb-coriander", "sb-cardamom", "sb-clove", "sb-lentil", "sb-peanut", "sb-pepper", "sb-cinnamon", "sb-cumin"].map(IMG),
     leaders: [
-      { name: "Md. Nur Alam", role: "Chairman", photo: IMG("p-sb-nur") },
-      { name: "Miunudden Molla", role: "Managing Director", photo: IMG("p-sb-miunudden") },
-      { name: "Mahmudul Hasan", role: "Director", photo: IMG("p-sb-mahmudul") },
-      { name: "Syad Md Iddris", role: "Director", photo: IMG("p-sb-syad") },
-      { name: "Shyad Hasan Ali", role: "Director", photo: IMG("p-sb-shyad") }
+      { name: "Md. Nur Alam", role: "Director", photo: IMG("p-sb-nur") },
+      { name: "Miunudden Molla", role: "Director", photo: IMG("p-sb-miunudden") },
+      { name: "Mahmudul Hasan", role: "Chairman", photo: IMG("p-sb-mahmudul") },
+      { name: "Syad Md Iddris", role: "Managing Director", photo: IMG("p-sb-syad") },
+      { name: "Shyad Hasan Ali", role: "Director", photo: IMG("p-sb-shyad") },
+      { name: "Ziaul Haider", role: "Director", photo: IMG("p-access-jiyaul") }
     ],
     contacts: [
       ["Head office", "House #1356 (Level 6), Avenue #11, Mirpur DOHS, Dhaka"],
@@ -183,11 +184,17 @@ export const COMPANIES = [
     highlights: ["Jute yarn", "Hessian rolls", "Lamination", "Quality control", "On-time delivery"],
     gallery: ["son-hall", "son-cover", "son-loom", "son-weave", "son-spin", "son-bundle", "son-yarn", "son-spool", "son-rolls", "son-blue", "son-fibre", "son-fibre2"].map(IMG),
     leaders: [
-      { name: "Md. Nur Alam", role: "Chairman", photo: IMG("p-sb-nur") },
-      { name: "Miunudden Molla", role: "Managing Director", photo: IMG("p-sb-miunudden") },
+      { name: "Md. Nur Alam", role: "Director", photo: IMG("p-sb-nur") },
+      { name: "Miunudden Molla", role: "Director", photo: IMG("p-sb-miunudden") },
       { name: "Mahmudul Hasan", role: "Director", photo: IMG("p-sb-mahmudul") },
       { name: "Syad Md Iddris", role: "Director", photo: IMG("p-sb-syad") },
-      { name: "Shyad Hasan Ali", role: "Director", photo: IMG("p-sb-shyad") }
+      { name: "Shyad Hasan Ali", role: "Director", photo: IMG("p-sb-shyad") },
+      { name: "Afsana Rahman", role: "Director", photo: IMG("p-prem-afsana") },
+      { name: "SK. Benozir Ahmed Siddique", role: "Director", photo: IMG("p-arjs-chair") },
+      { name: "Md Akhter Hossain", role: "Director", photo: IMG("p-arjs-md") },
+      { name: "Ziaul Haider", role: "Director", photo: IMG("p-access-jiyaul") },
+      { name: "Shafiqul Islam", role: "Director", photo: IMG("p-lake-shafiqul") },
+      { name: "Md. Sharif Uddin", role: "Director", photo: IMG("p-lake-sharif") }
     ],
     contacts: [
       ["Gulshan office", "House #36, Road #25, Level #3, Gulshan-1, Dhaka-1212"],
@@ -307,17 +314,17 @@ export const COMPANIES = [
 
 /* People who sit on more than one company board — shown once in the Leadership section. */
 export const PEOPLE = [
-  { name: "Mahmudul Hasan",      photo: IMG("p-sb-mahmudul"),   roles: [["Premio Real Estate", "Managing Director"], ["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Director"]] },
-  { name: "Afsana Rahman",       photo: IMG("p-prem-afsana"),   roles: [["Premio Real Estate", "Chairman"]] },
-  { name: "Syad Md Iddris",      photo: IMG("p-sb-syad"),       roles: [["ARJS Agro BD", "Deputy Managing Director"], ["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
-  { name: "Md. Nur Alam",        photo: IMG("p-sb-nur"),     roles: [["South Bangla Agro Food", "Chairman"], ["Sonali Jute Mills", "Chairman"], ["Premio Real Estate", "Director"]] },
-  { name: "Miunudden Molla",     photo: IMG("p-sb-miunudden"),  roles: [["South Bangla Agro Food", "Managing Director"], ["Sonali Jute Mills", "Managing Director"], ["Premio Real Estate", "Director"]] },
+  { name: "Mahmudul Hasan",      photo: IMG("p-sb-mahmudul"),   roles: [["Premio Real Estate", "Managing Director"], ["South Bangla Agro Food", "Chairman"], ["Sonali Jute Mills", "Director"]] },
+  { name: "Afsana Rahman",       photo: IMG("p-prem-afsana"),   roles: [["Premio Real Estate", "Chairman"], ["Sonali Jute Mills", "Director"]] },
+  { name: "Syad Md Iddris",      photo: IMG("p-sb-syad"),       roles: [["ARJS Agro BD", "Deputy Managing Director"], ["South Bangla Agro Food", "Managing Director"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
+  { name: "Md. Nur Alam",        photo: IMG("p-sb-nur"),     roles: [["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
+  { name: "Miunudden Molla",     photo: IMG("p-sb-miunudden"),  roles: [["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
   { name: "Shyad Hasan Ali",     photo: IMG("p-sb-shyad"),      roles: [["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
-  { name: "SK. Benozir Ahmed Siddique", photo: IMG("p-arjs-chair"), roles: [["ARJS Agro BD", "Chairman"]] },
-  { name: "Md Akhter Hossain",   photo: IMG("p-arjs-md"),       roles: [["ARJS Agro BD", "Managing Director"]] },
-  { name: "Ziaul Haider",        photo: IMG("p-access-jiyaul"), roles: [["Access World Trading", "Managing Director"]] },
-  { name: "Shafiqul Islam",      photo: IMG("p-lake-shafiqul"), roles: [["Lake View Garden City", "Chairman"]] },
-  { name: "Md. Sharif Uddin",    photo: IMG("p-lake-sharif"),   roles: [["Lake View Garden City", "Managing Director"]] }
+  { name: "SK. Benozir Ahmed Siddique", photo: IMG("p-arjs-chair"), roles: [["ARJS Agro BD", "Chairman"], ["Sonali Jute Mills", "Director"]] },
+  { name: "Md Akhter Hossain",   photo: IMG("p-arjs-md"),       roles: [["ARJS Agro BD", "Managing Director"], ["Sonali Jute Mills", "Director"]] },
+  { name: "Ziaul Haider",        photo: IMG("p-access-jiyaul"), roles: [["Access World Trading", "Managing Director"], ["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Director"]] },
+  { name: "Shafiqul Islam",      photo: IMG("p-lake-shafiqul"), roles: [["Lake View Garden City", "Chairman"], ["Sonali Jute Mills", "Director"]] },
+  { name: "Md. Sharif Uddin",    photo: IMG("p-lake-sharif"),   roles: [["Lake View Garden City", "Managing Director"], ["Sonali Jute Mills", "Director"]] }
 ];
 
 /* Group-level leadership — shown at the top of the Leadership page. */
