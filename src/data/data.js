@@ -77,10 +77,10 @@ export const COMPANIES = [
     highlights: ["Grain silos", "Onion storage", "Spices", "Pulses", "Oilseeds", "Feed mill"],
     gallery: ["sb-silo", "sb-silo2", "sb-onion1", "sb-onion2", "sb-warehouse", "sb-chili", "sb-turmeric", "sb-coriander", "sb-cardamom", "sb-clove", "sb-lentil", "sb-peanut", "sb-pepper", "sb-cinnamon", "sb-cumin"].map(IMG),
     leaders: [
-      { name: "Md. Nur Alam", role: "Director", photo: IMG("p-sb-nur") },
-      { name: "Miunudden Molla", role: "Director", photo: IMG("p-sb-miunudden") },
-      { name: "Mahmudul Hasan", role: "Chairman", photo: IMG("p-sb-mahmudul") },
-      { name: "Syad Md Iddris", role: "Managing Director", photo: IMG("p-sb-syad") },
+      { name: "Md. Nur Alam", role: "Chairman", photo: IMG("p-sb-nur") },
+      { name: "Miunudden Molla", role: "Managing Director", photo: IMG("p-sb-miunudden") },
+      { name: "Mahmudul Hasan", role: "Director", photo: IMG("p-sb-mahmudul") },
+      { name: "Syad Md Iddris", role: "Director", photo: IMG("p-sb-syad") },
       { name: "Shyad Hasan Ali", role: "Director", photo: IMG("p-sb-shyad") },
       { name: "Ziaul Haider", role: "Director", photo: IMG("p-access-jiyaul") }
     ],
@@ -186,8 +186,8 @@ export const COMPANIES = [
     leaders: [
       { name: "Md. Nur Alam", role: "Director", photo: IMG("p-sb-nur") },
       { name: "Miunudden Molla", role: "Director", photo: IMG("p-sb-miunudden") },
-      { name: "Mahmudul Hasan", role: "Director", photo: IMG("p-sb-mahmudul") },
-      { name: "Syad Md Iddris", role: "Director", photo: IMG("p-sb-syad") },
+      { name: "Mahmudul Hasan", role: "Chairman", photo: IMG("p-sb-mahmudul") },
+      { name: "Syad Md Iddris", role: "Managing Director", photo: IMG("p-sb-syad") },
       { name: "Shyad Hasan Ali", role: "Director", photo: IMG("p-sb-shyad") },
       { name: "Afsana Rahman", role: "Director", photo: IMG("p-prem-afsana") },
       { name: "SK. Benozir Ahmed Siddique", role: "Director", photo: IMG("p-arjs-chair") },
@@ -314,11 +314,11 @@ export const COMPANIES = [
 
 /* People who sit on more than one company board — shown once in the Leadership section. */
 export const PEOPLE = [
-  { name: "Mahmudul Hasan",      photo: IMG("p-sb-mahmudul"),   roles: [["Premio Real Estate", "Managing Director"], ["South Bangla Agro Food", "Chairman"], ["Sonali Jute Mills", "Director"]] },
+  { name: "Mahmudul Hasan",      photo: IMG("p-sb-mahmudul"),   roles: [["Premio Real Estate", "Managing Director"], ["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Chairman"]] },
   { name: "Afsana Rahman",       photo: IMG("p-prem-afsana"),   roles: [["Premio Real Estate", "Chairman"], ["Sonali Jute Mills", "Director"]] },
-  { name: "Syad Md Iddris",      photo: IMG("p-sb-syad"),       roles: [["ARJS Agro BD", "Deputy Managing Director"], ["South Bangla Agro Food", "Managing Director"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
-  { name: "Md. Nur Alam",        photo: IMG("p-sb-nur"),     roles: [["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
-  { name: "Miunudden Molla",     photo: IMG("p-sb-miunudden"),  roles: [["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
+  { name: "Syad Md Iddris",      photo: IMG("p-sb-syad"),       roles: [["ARJS Agro BD", "Deputy Managing Director"], ["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Managing Director"], ["Premio Real Estate", "Director"]] },
+  { name: "Md. Nur Alam",        photo: IMG("p-sb-nur"),     roles: [["South Bangla Agro Food", "Chairman"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
+  { name: "Miunudden Molla",     photo: IMG("p-sb-miunudden"),  roles: [["South Bangla Agro Food", "Managing Director"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
   { name: "Shyad Hasan Ali",     photo: IMG("p-sb-shyad"),      roles: [["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
   { name: "SK. Benozir Ahmed Siddique", photo: IMG("p-arjs-chair"), roles: [["ARJS Agro BD", "Chairman"], ["Sonali Jute Mills", "Director"]] },
   { name: "Md Akhter Hossain",   photo: IMG("p-arjs-md"),       roles: [["ARJS Agro BD", "Managing Director"], ["Sonali Jute Mills", "Director"]] },
