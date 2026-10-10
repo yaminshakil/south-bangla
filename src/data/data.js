@@ -312,10 +312,16 @@ export const PEOPLE = [
   { name: "Syad Md Iddris",      photo: IMG("p-sb-syad"),       roles: [["ARJS Agro BD", "Deputy Managing Director"], ["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
   { name: "Md. Nur Alam",        photo: IMG("p-sb-nur"),     roles: [["South Bangla Agro Food", "Chairman"], ["Sonali Jute Mills", "Chairman"], ["Premio Real Estate", "Director"]] },
   { name: "Miunudden Molla",     photo: IMG("p-sb-miunudden"),  roles: [["South Bangla Agro Food", "Managing Director"], ["Sonali Jute Mills", "Managing Director"], ["Premio Real Estate", "Director"]] },
-  { name: "Shafiqul Islam",      photo: IMG("p-lake-shafiqul"), roles: [["Lake View Garden City", "Chairman"]] },
-  { name: "Md. Sharif Uddin",    photo: IMG("p-lake-sharif"),   roles: [["Lake View Garden City", "Managing Director"]] },
+  { name: "Shyad Hasan Ali",     photo: IMG("p-sb-shyad"),      roles: [["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
   { name: "SK. Benozir Ahmed Siddique", photo: IMG("p-arjs-chair"), roles: [["ARJS Agro BD", "Chairman"]] },
   { name: "Md Akhter Hossain",   photo: IMG("p-arjs-md"),       roles: [["ARJS Agro BD", "Managing Director"]] },
-  { name: "Shyad Hasan Ali",     photo: IMG("p-sb-shyad"),      roles: [["South Bangla Agro Food", "Director"], ["Sonali Jute Mills", "Director"], ["Premio Real Estate", "Director"]] },
-  { name: "Ziaul Haider",        photo: IMG("p-access-jiyaul"), roles: [["Access World Trading", "Managing Director"]] }
+  { name: "Ziaul Haider",        photo: IMG("p-access-jiyaul"), roles: [["Access World Trading", "Managing Director"]] },
+  { name: "Shafiqul Islam",      photo: IMG("p-lake-shafiqul"), roles: [["Lake View Garden City", "Chairman"]] },
+  { name: "Md. Sharif Uddin",    photo: IMG("p-lake-sharif"),   roles: [["Lake View Garden City", "Managing Director"]] }
+];
+
+/* Group-level leadership — shown at the top of the Leadership page. */
+export const GROUP_LEADERS = [
+  { name: "Mahmudul Hasan", role: "Chairman", photo: IMG("p-sb-mahmudul") },
+  { name: "Syad Md Iddris", role: "Managing Director", photo: IMG("p-sb-syad") }
 ];

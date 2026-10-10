@@ -1,5 +1,5 @@
 import { useApp } from '../AppContext.jsx';
-import { COMPANIES } from '../data/data.js';
+import { COMPANIES, GROUP_LEADERS } from '../data/data.js';
 import Layout from '../components/Layout.jsx';
 import { NextBand, NoPhoto } from '../components/shared.jsx';
 import { Html, useReveal } from '../lib.jsx';
@@ -24,6 +24,17 @@ export default function Leadership() {
           <div className="ld-stats reveal">{stats.map(([n, l]) => <div key={l}><b>{n}</b><span>{l}</span></div>)}</div>
         </div>
       </header>
+
+      <section className="ld-tier tier-c"><div className="wrap"><h2 className="reveal">{t('South Bangla Group', 'সাউথ বাংলা গ্রুপ')}</h2>
+        <div className="ld-cards">{GROUP_LEADERS.map((p) => (
+          <article className="ld-card reveal" key={p.name}>
+            <div className="ph"><img src={p.photo} alt={p.name} loading="lazy" /></div>
+            <div className="in"><h3>{p.name}</h3>
+              <div className="rps"><span className="rp"><b>{role(p.role)}</b> · {t('South Bangla Group', 'সাউথ বাংলা গ্রুপ')}</span></div>
+            </div>
+          </article>
+        ))}</div>
+      </div></section>
 
       {tiers.map(([r, h, cls]) => (
         <section className={`ld-tier ${cls}`} key={r}><div className="wrap"><h2 className="reveal">{h}</h2>
